@@ -11,17 +11,18 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "Loai_Game")
-public class LoaiGame {
+@Table(name = "Game_Type")
+public class GameType {
     @Id
-    @Column(name = "Id", nullable = false, length = 50)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id", nullable = false)
+    private Long id;
 
     @Nationalized
-    @Column(name = "Loai", length = 50)
+    @Column(name = "Loai", nullable = false, length = 50)
     private String loai;
 
-    @OneToMany(mappedBy = "loaiGame")
+    @OneToMany(mappedBy = "gameType")
     private Set<Game> games = new LinkedHashSet<>();
 
 }

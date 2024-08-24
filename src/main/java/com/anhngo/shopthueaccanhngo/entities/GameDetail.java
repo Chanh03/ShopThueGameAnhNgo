@@ -11,37 +11,37 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "Game_ChiTiet")
-public class GameChitiet {
+@Table(name = "GameDetails")
+public class GameDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Game_Id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Game_Id", nullable = false)
     private Game game;
 
     @Nationalized
-    @Column(name = "Chi_Tiet")
+    @Column(name = "ChiTiet", nullable = false)
     private String chiTiet;
 
-    @Nationalized
-    @Column(name = "Gioi_Thieu")
-    private String gioiThieu;
 
-    @Column(name = "So_Luot_Tai")
+    @Column(name = "SoLuotTai", nullable = false)
     private Long soLuotTai;
 
     @Nationalized
-    @Column(name = "Huong_Dan")
+    @Column(name = "HuongDan", nullable = false)
     private String huongDan;
 
     @Nationalized
-    @Column(name = "Danh_Gia", length = 50)
+    @Column(name = "DanhGia", nullable = false, length = 50)
     private String danhGia;
 
-    @OneToMany(mappedBy = "gameChitiet")
-    private Set<HinhAnh> hinhAnhs = new LinkedHashSet<>();
+    @Column(name = "PhienBan", nullable = false, length = 50)
+    private String phienBan;
+
+    @OneToMany(mappedBy = "gameDetail")
+    private Set<Photo> photos = new LinkedHashSet<>();
 
 }

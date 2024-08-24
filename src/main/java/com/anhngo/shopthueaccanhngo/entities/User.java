@@ -29,18 +29,21 @@ public class User {
     private String email;
 
     @Nationalized
-    @Column(name = "Full_Name")
+    @Column(name = "FullName", nullable = false)
     private String fullName;
 
-    @Column(name = "Phone", length = 20)
+    @Column(name = "Phone", nullable = false, length = 20)
     private String phone;
 
-    @Column(name = "Ngay_Tao")
+    @Column(name = "NgayTao", nullable = false)
     private Instant ngayTao;
 
     @Nationalized
-    @Column(name = "Address")
+    @Column(name = "Address", nullable = false)
     private String address;
+
+    @Column(name = "HinhAnh")
+    private String hinhAnh;
 
     @ColumnDefault("0")
     @Column(name = "Money")
@@ -53,6 +56,6 @@ public class User {
     private Set<Comment> comments = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "username")
-    private Set<ThueGame> thueGames = new LinkedHashSet<>();
+    private Set<Rental> rentals = new LinkedHashSet<>();
 
 }

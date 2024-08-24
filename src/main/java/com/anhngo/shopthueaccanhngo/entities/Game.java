@@ -11,38 +11,43 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Table(name = "Games")
 public class Game {
     @Id
     @Column(name = "Id", nullable = false, length = 50)
     private String id;
 
     @Nationalized
-    @Column(name = "Ten", length = 50)
+    @Column(name = "Ten", nullable = false, length = 50)
     private String ten;
 
-    @Column(name = "Gia_Thue")
+    @Column(name = "Gia_Thue", nullable = false)
     private Long giaThue;
 
-    @Column(name = "Enabled")
-    private Boolean enabled;
+    @Column(name = "Enabled", nullable = false)
+    private Boolean enabled = false;
 
-    @Column(name = "Phien_Ban", length = 50)
-    private String phienBan;
+    @Column(name = "Hinh_Anh", nullable = false, length = 50)
+    private String hinhAnh;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Loai_Game_Id")
-    private LoaiGame loaiGame;
+    @Nationalized
+    @Column(name = "Gioi_Thieu", nullable = false)
+    private String gioiThieu;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Game_Type_Id", nullable = false)
+    private GameType gameType;
 
     @OneToMany(mappedBy = "game")
     private Set<Comment> comments = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "game")
-    private Set<GameChitiet> gameChitiets = new LinkedHashSet<>();
+    private Set<Download> downloads = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "game")
-    private Set<LinkTai> linkTais = new LinkedHashSet<>();
+    private Set<GameDetail> gameDetails = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "game")
-    private Set<ThueGame> thueGames = new LinkedHashSet<>();
+    private Set<Rental> rentals = new LinkedHashSet<>();
 
 }

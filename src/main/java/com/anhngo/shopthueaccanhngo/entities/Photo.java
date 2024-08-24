@@ -7,20 +7,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class LinkTai {
+@Table(name = "Photos")
+public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Game_Id")
-    private Game game;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "GameDetail_Id", nullable = false)
+    private GameDetail gameDetail;
 
-    @Column(name = "Loai", length = 50)
-    private String loai;
-
-    @Column(name = "Link")
-    private String link;
+    @Column(name = "HinhAnh", nullable = false)
+    private String hinhAnh;
 
 }

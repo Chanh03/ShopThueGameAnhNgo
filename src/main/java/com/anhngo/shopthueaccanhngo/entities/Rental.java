@@ -9,24 +9,24 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-public class ThueGame {
+public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Game_Id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Game_Id", nullable = false)
     private Game game;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Username")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Username", nullable = false)
     private User username;
 
-    @Column(name = "Ngay_Bat_Dau_Thue")
+    @Column(name = "NgayBatDauThue", nullable = false)
     private Instant ngayBatDauThue;
 
-    @Column(name = "Ngay_Het_Han_Thue")
+    @Column(name = "NgayHetHanThue", nullable = false)
     private Instant ngayHetHanThue;
 
 }
