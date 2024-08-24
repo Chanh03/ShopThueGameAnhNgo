@@ -1,21 +1,123 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="home(view)">
+<html lang="en" th:fragment="home(view)" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Anh Ngô</title>
+    <!--    BOOTSTRAP5-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-            crossorigin="anonymous"></script>
+    <!--    FONT-GOOGLE-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!--    FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/246169b37f.js" crossorigin="anonymous"></script>
+    <!--    CSS-->
+    <link href="/assets/style.css" rel="stylesheet">
 </head>
 <body>
-<div th:insert="${view}"></div>
+<!--Menu_Nav-->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-element">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1"
+                aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav1">
+            <ul class="navbar-nav justify-content-between align-items-center w-100">
+                <li class="nav-item">
+                    <a class="nav-link d-flex gap-2 align-items-center" href="/">
+                        <h6 class="fw-bold text-danger">
+                            <i class="fa-solid fa-heart"></i>
+                            <b>DONATE</b>
+                        </h6>
+                        <h6 style="font-size: 13px">Tải game tốc độ cao chỉ 1.000đ/1 game</h6>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div class="input-group">
+                        <input style="font-size: 13px" type="text" class="form-control" placeholder="Tìm kiếm game"
+                               aria-describedby="button-addon2">
+                        <button class="btn btn-dark" type="button" id="button-addon2"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <div class="d-flex gap-3 fs-4 align-items-center">
+                        <!--                        NOTIFICATION-->
+                        <button class="btn btn-white position-relative" data-bs-toggle="modal"
+                                data-bs-target="#NOTIFICATION">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge bg-danger">Mới</span>
+                        </button>
+                        <!--                        COMMENT-->
+                        <button class="btn btn-white position-relative" data-bs-toggle="modal"
+                                data-bs-target="#COMMENT">
+                            <i class="fa-solid fa-comment"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge bg-danger">Mới</span>
+                        </button>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-light ms-5 dropdown-toggle d-flex align-items-center p-2"
+                                type="button"
+                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-flex flex-column  me-2">
+                                <h6 class="mb-1 fw-bold" style="font-size: 13px;">Hi, user</h6>
+                                <div class="d-flex align-items-center">
+                                    <h6 class="mb-0 fw-bold me-2" style="font-size: 13px;">19,000đ</h6>
+                                </div>
+                            </div>
+                        </button>
+                        <ul style="font-size: 13px;" s class="dropdown-menu w-100"
+                            aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Action two</a></li>
+                            <li><a class="dropdown-item" href="#">Action three</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--Menu_Donate :V-->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.png" alt="" width="50" height="50">
+            <b>anhngo.com</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav
+            ms-auto">
+                <li class="nav-item">
+                    <a type="button" class="btn position-relative fw-bold">
+                        GAME TẢI NHIỀU
+                        <span class="position-absolute top-0 start-100 translate-middle badge bg-danger"> Mới <span
+                                class="visually-hidden">unread messages</span></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!---->
+<!---->
+<!---->
+<section class="container mt-5">
+    <div th:insert="${view}"></div>
+</section>
+<div th:insert="~{/home/_footer}"></div>
+<!---->
+<div th:insert="~{/home/_notiModal}"></div>
 </body>
+<!--    BOOTSTRAP5-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </html>

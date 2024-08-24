@@ -1,0 +1,82 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s;
+}
+
+.sticky-element {
+    position: -webkit-sticky; /* Dành cho trình duyệt WebKit */
+    position: sticky; /* Dành cho các trình duyệt khác */
+    top: 0; /* Đặt khoảng cách từ đỉnh trang */
+    padding: 10px; /* Padding cho phần tử */
+    z-index: 1000; /* Đảm bảo phần tử nằm trên các phần tử khác */
+}
+
+nav a:hover {
+    color: red !important;
+}
+
+.game-slide {
+    height: 50vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.btn-decor {
+    background-color: black;
+    border: 1px solid #f8f9fa;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-decor:hover {
+    background-color: red;
+    color: #fff;
+}
+
+/* Shine */
+.hover-animation figure {
+    position: relative;
+}
+
+.hover-animation figure::before {
+    position: absolute;
+    top: 0;
+    left: -75%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 50%;
+    height: 100%;
+    filter: blur(10px);
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.hover-animation figure:hover::before {
+    -webkit-animation: shine .75s;
+    animation: shine .75s;
+}
+@-webkit-keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+@keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+.line {
+    width: 100%;
+    height: 10px;
+    background: rgb(255, 0, 0);
+    margin: 20px 0;
+}
+
