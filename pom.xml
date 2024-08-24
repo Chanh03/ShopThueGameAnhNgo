@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.anhngo</groupId>
-    <artifactId>ShopThueAccAnhNgo</artifactId>
+    <artifactId>ShopThueGameAnhNgo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ShopThueAccAnhNgo</name>
     <description>ShopThueAccAnhNgo</description>
