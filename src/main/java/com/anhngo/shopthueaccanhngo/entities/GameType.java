@@ -19,8 +19,12 @@ public class GameType {
     private Long id;
 
     @Nationalized
-    @Column(name = "Loai", nullable = false, length = 50)
-    private String loai;
+    @Column(name = "Ten", nullable = false, length = 50)
+    private String ten;
+
+    @Nationalized
+    @Column(name = "Hinh_Anh", nullable = false, length = 50)
+    private String hinhAnh;
 
     @OneToMany(mappedBy = "gameType")
     private Set<Game> games = new LinkedHashSet<>();

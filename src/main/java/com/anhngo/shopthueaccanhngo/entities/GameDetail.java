@@ -5,13 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "GameDetails")
+@Table(name = "Game_Details")
 public class GameDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,22 +24,39 @@ public class GameDetail {
     private Game game;
 
     @Nationalized
-    @Column(name = "ChiTiet", nullable = false)
+    @Column(name = "Chi_Tiet", nullable = false)
     private String chiTiet;
 
 
-    @Column(name = "SoLuotTai", nullable = false)
+    @Column(name = "So_Luot_Tai", nullable = false)
     private Long soLuotTai;
 
+    @Column(name = "Update_Date", nullable = false)
+    private Date updateDate;
+
+    @Column(name = "Dung_Luong", nullable = false)
+    private String dungLuong;
+
+    @Column(name = "So_Part", nullable = false)
+    private Long soPart;
+
+    @Column(name = "So_Nguoi_Choi", nullable = false)
+    private String soNguoiChoi;
+
+    @Column(name = "He_Dieu_Hanh", nullable = false)
+    private String heDieuHanh;
+
+    @Column(name = "Choi_Bang", nullable = false)
+    private String choiBang;
+
+    @Column(name = "Ngon_Ngu", nullable = false)
+    private String ngonNgu;
+
     @Nationalized
-    @Column(name = "HuongDan", nullable = false)
+    @Column(name = "Huong_Dan", nullable = false)
     private String huongDan;
 
-    @Nationalized
-    @Column(name = "DanhGia", nullable = false, length = 50)
-    private String danhGia;
-
-    @Column(name = "PhienBan", nullable = false, length = 50)
+    @Column(name = "Phien_Ban", nullable = false, length = 50)
     private String phienBan;
 
     @OneToMany(mappedBy = "gameDetail")

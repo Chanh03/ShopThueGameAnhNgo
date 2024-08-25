@@ -1,25 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
 <!-- Modal -->
 <div class="modal fade" id="NOTIFICATION" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body p-4">
                 <ul class="p-0">
-                    <li class="d-flex align-items-center gap-3 border-start border-danger border-5 mb-3">
+                    <li th:each="no,index : ${notifications}"
+                        class="d-flex align-items-center gap-3 border-start border-danger border-5 mb-3">
                         <i class="fa-solid fa-bell ms-2"></i>
                         <div>
-                            <h5 class="fw-bold">Thông báo 1</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet asperiores beatae
-                                commodi, dolor eius facere hic incidunt ipsum itaque laboriosam magnam obcaecati
-                                perferendis quasi quia quisquam quo rem voluptate.</p>
-                        </div>
-                    </li>
-                    <li class="d-flex align-items-center gap-3 border-start border-danger border-5 mb-3">
-                        <i class="fa-solid fa-bell ms-2"></i>
-                        <div>
-                            <h5 class="fw-bold">Thông báo 1</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet asperiores beatae
-                                commodi, dolor eius facere hic incidunt ipsum itaque laboriosam magnam obcaecati
-                                perferendis quasi quia quisquam quo rem voluptate.</p>
+                            <div class="d-flex align-items-center gap-3">
+                                <h5 th:text="${index.index+1}" class="fw-bold badge bg-success"></h5>
+                                <h5 th:text="${no.header}" class="fw-bold">Thông báo 1</h5>
+                            </div>
+                            <h6>[[${no.body}]] : <a class="text-danger" th:if="${no.link}" th:href="${no.link}">[[${no.link}]]</a>
+                            </h6>
                         </div>
                     </li>
                 </ul>
@@ -27,3 +29,5 @@
         </div>
     </div>
 </div>
+</body>
+</html>

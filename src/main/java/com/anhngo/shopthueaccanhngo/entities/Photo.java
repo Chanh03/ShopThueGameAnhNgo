@@ -15,10 +15,10 @@ public class Photo {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "GameDetail_Id", nullable = false)
+    @JoinColumn(name = "Game_Detail_Id", nullable = false)
     private GameDetail gameDetail;
 
-    @Column(name = "HinhAnh", nullable = false)
+    @Column(name = "Hinh_Anh", nullable = false)
     private String hinhAnh;
 
 }

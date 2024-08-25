@@ -19,6 +19,10 @@ nav a:hover {
     color: red !important;
 }
 
+.link-hover:hover {
+    color: red !important;
+}
+
 .game-slide {
     height: 600px;
     width: 100%;
@@ -43,6 +47,7 @@ nav a:hover {
 .btn-decor:hover {
     background-color: red;
     color: #fff;
+    transform: translateY(-3px);
 }
 
 /* Shine */
@@ -82,9 +87,11 @@ nav a:hover {
         left: 125%;
     }
 }
+
 img {
     transition: all 0.3s;
 }
+
 .hover-animation:hover img {
     -webkit-filter: brightness(1.2);
     filter: brightness(1.2);

@@ -7,20 +7,22 @@
 <body>
 <div class="container">
     <div th:insert="~{/home/_carousel}"></div>
+    <!--    GAME TYPE-->
     <div class="row justify-content-between mt-5">
-        <div class="col-lg-2" th:each="type : ${gameTypes}">
+        <div class="col-lg-2 col-md-4 col-sm-6" th:each="type : ${gameTypes}">
             <div class="card border-0 hover-animation d-flex flex-row align-items-center gap-2">
                 <div class="col-lg-4 overflow-hidden">
-                    <img src="/images/logo.png" alt="" class="mx-auto w-100">
+                    <img th:src="@{/images/{id}(id=${type.hinhAnh})}" th:alt="${type.hinhAnh}" class="mx-auto w-100">
                 </div>
                 <div class="col-lg-8">
-                    <h5 class="fw-bold" th:text="${type.loai}"></h5>
+                    <h5 class="fw-bold" th:text="${type.ten}"></h5>
                     <a href="#" class="nav-link d-flex align-items-center gap-3 text-danger">Xem ngay <i
                             class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
+    <!--    GAME HOT-->
     <div class="d-flex align-items-center mt-3">
         <div class="line" style="width: 30px"></div>
         <div class="w-25 d-flex justify-content-center align-items-center">
@@ -29,6 +31,7 @@
         </div>
         <div class="line"></div>
     </div>
+    <!--    RANDOM GAME-->
     <div class="row mt-3">
         <div class="col-lg-6" th:object="${randomGame}">
             <div class="card border-0 hover-animation shadow">
@@ -80,15 +83,17 @@
             <div class="row mt-3">
                 <div class="col-lg-3 mb-4" th:each="g : ${games}">
                     <div class="card border-0 hover-animation">
-                        <div class="overflow-hidden rounded-3 position-relative">
-                            <figure>
-                                <img th:src="@{/images/games/{id}(id=${g.hinhAnh})}" class="card-img-top"
-                                     th:alt="${g.hinhAnh}">
-                            </figure>
-                        </div>
+                        <a class="nav-link link-hover" th:href="@{/chi-tiet/{id}(id=${g.id})}">
+                            <div class="overflow-hidden rounded-3 position-relative" style="height: 150px">
+                                <figure><img th:src="@{/images/games/{id}(id=${g.hinhAnh})}" class="card-img-top"
+                                             th:alt="${g.hinhAnh}"></figure>
+                            </div>
+                        </a>
                         <div class="card-body p-0 mt-2">
-                            <h5 th:text="${g.ten}" class="card-title fw-bold">Black Myth: Wukong</h5>
-                            <p class="card-text" th:text="'Thể loại : ' + ${g.getGameType().loai}"></p>
+                            <a class="nav-link link-hover" th:href="@{/chi-tiet/{id}(id=${g.id})}">
+                                <h5 th:text="${g.ten}" class="card-title fw-bold">Black Myth: Wukong</h5>
+                            </a>
+                            <p class="card-text" th:text="'Thể loại : ' + ${g.getGameType().ten}"></p>
                             <div class="d-flex">
                                 <a style="font-size: 13px" href="#"
                                    class="btn btn-decor w-100 d-flex align-items-center justify-content-between">Tải

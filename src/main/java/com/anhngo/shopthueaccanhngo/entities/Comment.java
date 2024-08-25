@@ -24,11 +24,11 @@ public class Comment {
     @JoinColumn(name = "Game_Id", nullable = false)
     private Game game;
 
-    @Column(name = "NgayDang", nullable = false)
+    @Column(name = "Ngay_Dang", nullable = false)
     private Instant ngayDang;
 
     @Nationalized
-    @Column(name = "NoiDung", nullable = false)
+    @Column(name = "Noi_Dung", nullable = false)
     private String noiDung;
 
 }

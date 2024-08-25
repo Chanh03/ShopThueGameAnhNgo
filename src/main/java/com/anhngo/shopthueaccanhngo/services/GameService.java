@@ -28,4 +28,8 @@ public class GameService {
         Random random = new Random();
         return games.get(random.nextInt(games.size()));
     }
+
+    public Game findById(String id) {
+        return gameRepo.findById(id).orElse(null);
+    }
 }
