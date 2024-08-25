@@ -22,24 +22,26 @@
                         th:text="${'Cập nhật ngày: '+#dates.format(gameDetails.updateDate, 'dd/MM/yyyy HH:mm')}"></h6>
                     <div class="d-flex gap-2">
                         <h6 class="text-danger border-0 text-decoration-underline rounded-0">Số lượt tải :</h6>
-                        <h6 th:text="${gameDetails.soLuotTai}" class="text-danger fw-bold border-0 text-decoration-underline rounded-0"></h6>
+                        <h6 th:text="${gameDetails.soLuotTai}"
+                            class="text-danger fw-bold border-0 text-decoration-underline rounded-0"></h6>
                     </div>
                 </div>
             </div>
             <!--            CHI TIẾT GAME-->
             <div class="d-flex align-items-center justify-content-center mt-5">
                 <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
-                    <h3 class="fw-bold text-danger">[[${gameDetails.getGame.ten.toUpperCase()}]]</h3>
+                    <h3 class="fw-bold text-danger"><i class="fa-regular fa-heart"></i>
+                        [[${gameDetails.getGame.ten.toUpperCase()}]]</h3>
                 </div>
                 <div class="line w-25"></div>
             </div>
-            <div class="card p-4 w-100 shadow">
+            <div class="card p-4 w-100 shadow border-0">
                 <h5 class="card-text" th:text="${gameDetails.chiTiet}"></h5>
             </div>
             <!--            SLIDE-->
             <div class="d-flex align-items-center justify-content-center mt-5">
                 <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
-                    <h3 class="fw-bold text-danger">ẢNH GAME</h3>
+                    <h3 class="fw-bold text-danger"><i class="fa-regular fa-images"></i> ẢNH GAME</h3>
                 </div>
                 <div class="line w-25"></div>
             </div>
@@ -65,12 +67,13 @@
             <div class="row mt-5">
                 <div class="d-flex align-items-center justify-content-center mt-5">
                     <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
-                        <h3 class="fw-bold text-danger">THÔNG TIN GAME</h3>
+                        <h3 class="fw-bold text-danger"><i class="fa-regular fa-circle-question"></i> THÔNG TIN GAME
+                        </h3>
                     </div>
                     <div class="line w-25"></div>
                 </div>
                 <div class="d-flex gap-4">
-                    <div class="card p-4 w-100 shadow">
+                    <div class="card p-4 w-100 shadow border-0">
                         <div class="d-flex gap-2">
                             <h5 class="card-title fw-bold">Tên : /</h5>
                             <h5 class="card-text" th:text="${gameDetails.getGame.ten}"></h5>
@@ -95,7 +98,7 @@
                             <h5 class="card-text" th:text="${gameDetails.soPart}"></h5>
                         </div>
                     </div>
-                    <div class="card p-4 w-100 shadow">
+                    <div class="card p-4 w-100 shadow border-0">
                         <div class="d-flex gap-2">
                             <h5 class="card-title fw-bold">Số người chơi : /</h5>
                             <h5 class="card-text" th:text="${gameDetails.soNguoiChoi}"></h5>
@@ -117,28 +120,85 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4"></div>
+        <!--        THÔNG TIN TÀI KHOẢN-->
+        <div class="col-lg-4 d-sm-none d-lg-block">
+            <div class="card mx-auto border-0 shadow sticky-element" style="top: 100px; z-index: 1;">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold text-uppercase text-danger">Thông tin tài khoản</h5>
+                    <img src="https://via.placeholder.com/80" alt="Logo" class="img-fluid rounded-circle my-3">
+                    <p class="card-text">Xin chào: <strong>chanh03</strong></p>
+                    <div class="my-3 d-flex justify-content-center align-items-center gap-2">
+                        <button class="btn btn-primary me-2">Lưu bài</button>
+                        <!-- Nút chia sẻ Facebook -->
+                        <div class="fb-share-wrapper">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshopthuegameanhngo.com%2F&amp;src=sdkpreparse"
+                               class="custom-fb-button btn btn-primary"
+                               target="_blank">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush text-start">
+                        <li class="list-group-item"><i class="bi bi-controller"></i> Game đã mua</li>
+                        <li class="list-group-item"><i class="bi bi-tv"></i> Lịch sử xem game</li>
+                        <li class="list-group-item"><i class="bi bi-wallet"></i> Lịch Sử Nạp VIP</li>
+                        <li class="list-group-item"><i class="bi bi-bookmark"></i> Bài đã lưu</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--    <h6 th:text="${gameDetails.getGame().ten}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.getGame().hinhAnh}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.phienBan}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.huongDan}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.soLuotTai}"></h6>-->
-    <!--    <h6 th:text="${#dates.format(gameDetails.updateDate, 'dd/MM/yyyy HH:mm')}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.heDieuHanh}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.choiBang}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.dungLuong}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.soNguoiChoi}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.ngonNgu}"></h6>-->
-    <!--    <h6 th:text="${gameDetails.soPart}"></h6>-->
-    <!--    <div th:each="p : ${gameDetails.getPhotos()}">-->
-    <!--        <img th:src="@{/images/games/{id}(id=${p.hinhAnh})}" th:alt="${p.hinhAnh}" width="200" height="200">-->
-    <!--    </div>-->
-    <!--    <div th:each="c : ${comments}">-->
-    <!--        <h6 th:text="${c.getUsername().username}"></h6>-->
-    <!--        <h6 th:text="${c.getNoiDung()}"></h6>-->
-    <!--        <h6 th:text="${#dates.format(c.getNgayDang(), 'dd/MM/yyyy HH:mm')}"></h6>-->
-    <!--    </div>-->
+    <!--    BÌNH LUẬN-->
+    <div class="row mt-5">
+        <div class="col-lg-12">
+            <div class="card shadow-lg p-3 border-0">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
+                        <h4 class="fw-bold text-success">BÌNH LUẬN <i class="fa-regular fa-comments"></i></h4>
+                    </div>
+                    <div class="line w-25 bg-success"></div>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/binh-luan}" method="post">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                      style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Bình luận bài viết</label>
+                        </div>
+                        <button type="submit" class="btn float-end mt-4 btn-success border-0 rounded-0">Đăng bình
+                            luận
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="line w-25 bg-success"></div>
+                <div class="mt-5">
+                    <div th:each="c : ${comments}"
+                         class="mb-2 d-flex justify-content-start align-items-center gap-2">
+                        <div class="border p-3 overflow-hidden text-center"
+                             style="border-radius: 50%;width: 100px;height: 100px;box-shadow: 0 0 10px 0 rgb(0,255,37);">
+                            <img class="rounded-circle" style="max-width: 100px; height: auto; object-fit: cover;"
+                                 th:src="@{/users/images/{id}(id=${c.getUsername().hinhAnh})}"
+                                 th:alt="${c.getUsername().hinhAnh}">
+                        </div>
+                        <div class="card border-0 shadow p-3 w-50">
+                            <div class="d-flex gap-5 justify-content-between align-items-center">
+                                <h5 class="fw-bold text-success" th:text="${c.getUsername().fullName}"></h5>
+                                <div class="d-flex align-middle gap-2">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <h6 class="fst-italic"
+                                        th:text="${#dates.format(c.getNgayDang(), 'dd/MM/yyyy HH:mm')}"></h6>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 th:text="${c.noiDung}"></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

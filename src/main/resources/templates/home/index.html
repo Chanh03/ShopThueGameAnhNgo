@@ -15,6 +15,10 @@
     <script src="https://kit.fontawesome.com/246169b37f.js" crossorigin="anonymous"></script>
     <!--    CSS-->
     <link href="/assets/style.css" rel="stylesheet">
+    <!--    FACEBOOK-->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0"
+            nonce="snj4vYZX"></script>
 </head>
 <body>
 <!--Menu_Nav-->
@@ -49,7 +53,8 @@
                         <button class="btn btn-white position-relative" data-bs-toggle="modal"
                                 data-bs-target="#NOTIFICATION">
                             <i class="fa-solid fa-bell"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge bg-danger" th:text="${notificationsSize}"></span>
+                            <span class="position-absolute top-0 start-100 translate-middle badge bg-danger"
+                                  th:text="${notificationsSize}"></span>
                         </button>
                         <!--                        COMMENT-->
                         <button class="btn btn-white position-relative" data-bs-toggle="modal"
@@ -120,4 +125,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+<!--    JS-->
+<script src="/assets/js.js"></script>
 </html>

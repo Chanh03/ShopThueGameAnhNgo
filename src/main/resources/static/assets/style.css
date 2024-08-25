@@ -12,7 +12,7 @@ body {
     position: sticky; /* Dành cho các trình duyệt khác */
     top: 0; /* Đặt khoảng cách từ đỉnh trang */
     padding: 10px; /* Padding cho phần tử */
-    z-index: 1000; /* Đảm bảo phần tử nằm trên các phần tử khác */
+    z-index: 10; /* Đảm bảo phần tử nằm trên các phần tử khác */
 }
 
 nav a:hover {
@@ -103,4 +103,3 @@ img {
     height: 10px;
     background: rgb(255, 0, 0);
 }
-

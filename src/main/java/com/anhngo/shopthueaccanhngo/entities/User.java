@@ -29,20 +29,20 @@ public class User {
     private String email;
 
     @Nationalized
-    @Column(name = "FullName", nullable = false)
+    @Column(name = "Full_Name", nullable = false)
     private String fullName;
 
     @Column(name = "Phone", nullable = false, length = 20)
     private String phone;
 
-    @Column(name = "NgayTao", nullable = false)
+    @Column(name = "Ngay_Tao", nullable = false)
     private Instant ngayTao;
 
     @Nationalized
     @Column(name = "Address", nullable = false)
     private String address;
 
-    @Column(name = "HinhAnh")
+    @Column(name = "Hinh_Anh")
     private String hinhAnh;
 
     @ColumnDefault("0")
