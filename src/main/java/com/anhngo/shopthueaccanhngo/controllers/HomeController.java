@@ -39,7 +39,7 @@ public class HomeController {
         model.addAttribute("notificationsSize", notificationService.getAll().size());
     }
 
-    @RequestMapping({"/", "/trang-chu"})
+    @RequestMapping({"/", "/trang-chu","/home"})
     public String home(Model model) {
         model.addAttribute("games", gameService.getAll());
         Pageable pageable = PageRequest.of(0, 10, Sort.by("id").descending());
@@ -52,5 +52,10 @@ public class HomeController {
     @RequestMapping("/donate")
     public String donate() {
         return "home/_donate";
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "security/login";
     }
 }

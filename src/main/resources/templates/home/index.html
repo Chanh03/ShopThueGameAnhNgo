@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="home(view)" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" th:fragment="home(view)" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Anh Ngô</title>
@@ -64,7 +65,7 @@
                             <span class="position-absolute top-0 start-100 translate-middle badge bg-danger">0</span>
                         </button>
                     </div>
-                    <div class="dropdown">
+                    <div sec:authorize="isAuthenticated()" class="dropdown">
                         <button class="btn btn-light ms-5 dropdown-toggle d-flex align-items-center p-2"
                                 type="button"
                                 id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -82,6 +83,9 @@
                             <li><a class="dropdown-item" href="#">Action three</a></li>
                         </ul>
                     </div>
+                    <div class="border rounded-3 ms-5" sec:authorize="isAnonymous()">
+                        <a class="nav-link fw-bold" href="/login">Đăng nhập</a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -91,7 +95,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/images/logo.png" alt="" width="50" height="50">
+            <img src="/images/logo.png" alt="" style="width: 50px;height: 50px;">
             <b>anhngo.com</b>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Nationalized;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.Instant;
 import java.util.LinkedHashSet;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "Users")
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "Username", nullable = false, length = 50)
     private String username;
@@ -49,8 +50,8 @@ public class User {
     @Column(name = "Money")
     private Long money;
 
-    @OneToMany(mappedBy = "username")
-    private Set<Authority> authorities = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Authority> authorities;
 
     @OneToMany(mappedBy = "username")
     private Set<Comment> comments = new LinkedHashSet<>();
@@ -58,4 +59,23 @@ public class User {
     @OneToMany(mappedBy = "username")
     private Set<Rental> rentals = new LinkedHashSet<>();
 
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
