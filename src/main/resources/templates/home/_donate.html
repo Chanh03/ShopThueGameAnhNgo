@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{/home/index.html :: home(~{::body})}" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Donate</title>
+</head>
+<body>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-danger" href="/trang-chu">Trang chủ</a></li>
+        <li aria-current="page" class="breadcrumb-item active">Donate</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="d-flex align-items-center justify-content-center mt-5">
+        <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
+            <h3 class="fw-bold text-danger"><i class="fa-regular fa-heart"></i>
+                <b>ỦNG HỘ CHÚNG TÔI</b>
+            </h3>
+        </div>
+        <div class="line w-25"></div>
+    </div>
+    <div class="col-lg-8">
+        <!--        GIỚI THIỆU-->
+        <p class="mt-3">Chúng tôi xin chân thành cảm ơn sự ủng hộ quý báu của quý vị. Mọi đóng góp đều là nguồn động lực
+            to lớn giúp chúng tôi không ngừng cải thiện và mang đến dịch vụ tốt nhất.</p>
+        <p class="mt-2">Quý vị cũng có thể ủng hộ chúng tôi thông qua việc tham gia các trò chơi chỉ với <span
+                class="text-danger fw-bold">1.000đ/1 game</span>. Sự ủng hộ này sẽ giúp chúng tôi duy trì và phát triển
+            những nội dung giải trí chất lượng.</p>
+        <p class="mt-2">Hãy <span class="text-primary fw-bold">nạp VIP</span> ngay để trải nghiệm tải game với <span
+                class="text-success fw-bold">tốc độ không giới hạn</span> và nhiều ưu đãi hấp dẫn khác!</p>
+        <!--        HƯỚNG DẪN NẠP CK-->
+        <div class="card border-0 shadow">
+            <div class="card-header">
+                <div class="card-text">
+                    <h4 class="fw-bold text-danger mt-2">NẠP THẺ BẰNG THẺ CÀO ĐIỆN THOẠI (THỜI GIAN 1-2 PHÚT)</h4>
+                </div>
+                <div class="card-body">
+                    <h6>Thời gian nạp thẻ: 1-2 phút.</h6>
+                    <h6>Để tối ưu quá trình nạp thẻ các bạn truy cập vào đường dẫn bên dưới nhé.</h6>
+                    <button class="btn btn-decor mt-3 w-50">Chuyển đến trang nạp thẻ</button>
+                </div>
+            </div>
+        </div>
+        <div class="card border-0 shadow mt-3">
+            <div class="card-header">
+                <div class="card-text">
+                    <h4 class="fw-bold text-danger mt-2">NẠP BẰNG NGÂN HÀNG (TỰ ĐỘNG)</h4>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-decor mt-3 w-50">Chuyển đến trang chuyển khoản</button>
+                </div>
+            </div>
+        </div>
+        <!--        NAP VIP LA GÌ-->
+        <div class="accordion accordion-flush mt-3 border" id="napVip">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-napVip" aria-expanded="false" aria-controls="flush-napVip">
+                        <div>
+                            <h5 class="fw-bold text-danger">NẠP VIP LÀ GÌ?</h5>
+                            <h6>Nạp VIP là cách mà chúng tôi thu phí để duy trì và phát triển dịch vụ. Khi nạp VIP, bạn
+                                sẽ
+                                được trải nghiệm tải game với tốc độ không giới hạn và nhiều ưu đãi hấp dẫn khác.</h6>
+                        </div>
+                    </button>
+                </h2>
+                <div id="flush-napVip" class="accordion-collapse collapse" data-bs-parent="#napVip">
+                    <div class="accordion-body">
+                        <h5 class="fw-bold">Link VIP là gì? Vì sao nên tải link VIP</h5>
+                        <ul>
+                            <li>Link VIP là link tải game với tốc độ cao, không giới hạn.</li>
+                            <li>Link VIP không bị giới hạn số lần tải.</li>
+                            <li>Link VIP không bị giới hạn tốc độ tải.</li>
+                            <li>Link VIP không bị giới hạn thời gian tải.</li>
+                            <li>Link VIP không bị giới hạn dung lượng tải.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        DONATE-->
+        <div class="accordion accordion-flush mt-3 border" id="donate">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-donate" aria-expanded="false" aria-controls="flush-donate">
+                        <div>
+                            <h5 class="fw-bold text-danger">DONATE</h5>
+                            <h6>Các bạn có thể ủng hộ chúng tôi qua:</h6>
+                        </div>
+                    </button>
+                </h2>
+                <div id="flush-donate" class="accordion-collapse collapse" data-bs-parent="#donate">
+                    <div class="accordion-body">
+                        <h5 class="fw-bold">Chuyển khoản qua ngân hàng</h5>
+                        <ul>
+                            <li>Ngân hàng: Vietcombank</li>
+                            <li>Chủ tài khoản: Nguyễn Văn A</li>
+                            <li>Số tài khoản: 0123456789</li>
+                        </ul>
+                        <h5 class="fw-bold">Chuyển khoản qua ví điện tử</h5>
+                        <ul>
+                            <li>Momo: 0123456789</li>
+                            <li>ZaloPay: 0123456789</li>
+                            <li>Ví AirPay: 0123456789</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    ẢNH ỦNG HỘ-->
+    <div class="col-lg-4 d-sm-none d-md-block">
+        <div class="sticky-element" style="top: 100px; z-index: 2">
+            <p class="text-center mt-2 fw-bold">Ủng hộ chúng tôi tại:</p>
+            <img src="/images/donateQr.jpg" class="w-100" alt="donateQr.jpg">
+            <p class="text-center mt-2 fw-bold">Xin cảm ơn bạn đã ủng hộ!</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

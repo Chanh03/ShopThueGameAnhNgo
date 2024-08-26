@@ -8,11 +8,13 @@ body {
 }
 
 .sticky-element {
-    position: -webkit-sticky; /* Dành cho trình duyệt WebKit */
-    position: sticky; /* Dành cho các trình duyệt khác */
-    top: 0; /* Đặt khoảng cách từ đỉnh trang */
-    padding: 10px; /* Padding cho phần tử */
-    z-index: 10; /* Đảm bảo phần tử nằm trên các phần tử khác */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.small-font {
+    font-size: 14px;
 }
 
 nav a:hover {
@@ -24,11 +26,15 @@ nav a:hover {
 }
 
 .game-slide {
-    height: 600px;
-    width: 100%;
     object-fit: cover;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+}
+.game-slide img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .btn-decor {

@@ -13,7 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -23,6 +22,9 @@ public class HomeController {
 
     @Autowired
     private GameTypeService gameTypeService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @ModelAttribute("gameTypes")
     public void gameTypes(Model model) {
@@ -37,9 +39,6 @@ public class HomeController {
         model.addAttribute("notificationsSize", notificationService.getAll().size());
     }
 
-    @Autowired
-    private NotificationService notificationService;
-
     @RequestMapping({"/", "/trang-chu"})
     public String home(Model model) {
         model.addAttribute("games", gameService.getAll());
@@ -48,5 +47,10 @@ public class HomeController {
         model.addAttribute("listGamePage", page);
         model.addAttribute("randomGame", gameService.getRandomGame());
         return "home/_listGame";
+    }
+
+    @RequestMapping("/donate")
+    public String donate() {
+        return "home/_donate";
     }
 }

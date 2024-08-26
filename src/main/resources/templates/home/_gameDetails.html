@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-8">
             <!--            GIOI THIEU SƠ-->
-            <div>
+            <div class="row">
                 <h1 class="fw-bold" th:text="${'Tải game '+gameDetails.getGame.ten}"></h1>
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="badge bg-danger border-0 rounded-0 px-4 py-2"
@@ -36,7 +36,7 @@
                 <div class="line w-25"></div>
             </div>
             <div class="card p-4 w-100 shadow border-0">
-                <h5 class="card-text" th:text="${gameDetails.chiTiet}"></h5>
+                <h6 class="card-text" th:text="${gameDetails.chiTiet}"></h6>
             </div>
             <!--            SLIDE-->
             <div class="d-flex align-items-center justify-content-center mt-5">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="line w-25"></div>
             </div>
-            <div style="min-height: 300px; max-height: 400px" class="carousel slide overflow-hidden"
+            <div style="height: 400px;" class="carousel slide overflow-hidden"
                  data-bs-ride="carousel"
                  id="carouselExampleAutoplaying">
                 <div class="carousel-inner">
@@ -63,7 +63,7 @@
                     <span aria-hidden="true" class="carousel-control-next-icon"></span>
                 </button>
             </div>
-            <!--            THONG TIN CHI TIET-->
+            <!--            THONG TIN CHI GAME-->
             <div class="row mt-5">
                 <div class="d-flex align-items-center justify-content-center mt-5">
                     <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
@@ -73,91 +73,140 @@
                     <div class="line w-25"></div>
                 </div>
                 <div class="col-lg-12 mt-2">
-                    <div class="row shadow p-0">
-                        <!-- Chú ý sử dụng row bên trong để đảm bảo căn chỉnh lưới -->
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="card p-4 border-0">
-                                <div class="d-flex gap-2">
-                                    <h5 class="card-title fw-bold">Tên: </h5>
-                                    <h5 class="card-text" th:text="${gameDetails.getGame.ten}"></h5>
-                                </div>
-                                <div class="d-flex gap-2 mt-2">
-                                    <h5 class="card-title fw-bold">Ngày update: </h5>
-                                    <h5 class="card-text"
-                                        th:text="${#dates.format(gameDetails.updateDate, 'dd/MM/yyyy HH:mm')}"></h5>
-                                </div>
-                                <div class="d-flex gap-2 mt-2">
-                                    <h5 class="card-title fw-bold">Thể loại: </h5>
-                                    <a class="nav-link"
-                                       th:href="@{/the-loai/{id}(id=${gameDetails.getGame.gameType.id})}">
-                                        <h5 class="text-danger" th:text="${gameDetails.getGame.gameType.ten}"></h5>
-                                    </a>
-                                </div>
-                                <div class="d-flex gap-2 mt-2">
-                                    <h5 class="card-title fw-bold">Dung lượng: </h5>
-                                    <h5 class="card-text" th:text="${gameDetails.dungLuong}"></h5>
-                                </div>
-                                <div class="d-flex gap-2 mt-2">
-                                    <h5 class="card-title fw-bold">Số Part: </h5>
-                                    <h5 class="card-text" th:text="${gameDetails.soPart}"></h5>
-                                </div>
+                    <div class="row g-0 shadow p-0">
+                        <div class="card p-4 border-0 col-lg-6 col-md-12 col-sm-12">
+                            <div class="d-flex gap-2">
+                                <h6 class="card-title fw-bold">Tên: </h6>
+                                <h6 class="card-text" th:text="${gameDetails.getGame.ten}"></h6>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <h6 class="card-title fw-bold">Ngày update: </h6>
+                                <h6 class="card-text"
+                                    th:text="${#dates.format(gameDetails.updateDate, 'dd/MM/yyyy HH:mm')}"></h6>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <h6 class="card-title fw-bold">Thể loại: </h6>
+                                <a class="nav-link"
+                                   th:href="@{/the-loai/{id}(id=${gameDetails.getGame.gameType.id})}">
+                                    <h6 class="text-danger" th:text="${gameDetails.getGame.gameType.ten}"></h6>
+                                </a>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <h6 class="card-title fw-bold">Dung lượng: </h6>
+                                <h6 class="card-text" th:text="${gameDetails.dungLuong}"></h6>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <h6 class="card-title fw-bold">Số Part: </h6>
+                                <h6 class="card-text" th:text="${gameDetails.soPart}"></h6>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="card p-4 border-0">
-                                <div class="d-flex gap-2">
-                                    <h5 class="card-title fw-bold">Số người chơi: </h5>
-                                    <h5 class="card-text" th:text="${gameDetails.soNguoiChoi}"></h5>
-                                </div>
-                                <div class="d-flex gap-2 mt-2">
-                                    <h5 class="card-title fw-bold">Ngôn ngữ: </h5>
-                                    <h5 class="card-text" th:text="${gameDetails.ngonNgu}"></h5>
-                                </div>
-                                <div class="d-flex gap-2 mt-2">
-                                    <h5 class="card-title fw-bold">Hệ điều hành: </h5>
-                                    <h5 class="card-text" th:text="${gameDetails.heDieuHanh}"></h5>
-                                </div>
-                                <div class="d-flex gap-2 mt-2">
-                                    <h5 class="card-title fw-bold">Chơi bằng: </h5>
-                                    <h5 class="card-text" th:text="${gameDetails.choiBang}"></h5>
-                                </div>
+                        <div class="card p-4 border-0 col-lg-6 col-md-12 col-sm-12">
+                            <div class="d-flex gap-2">
+                                <h6 class="card-title fw-bold">Số người chơi: </h6>
+                                <h6 class="card-text" th:text="${gameDetails.soNguoiChoi}"></h6>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <h6 class="card-title fw-bold">Ngôn ngữ: </h6>
+                                <h6 class="card-text" th:text="${gameDetails.ngonNgu}"></h6>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <h6 class="card-title fw-bold">Hệ điều hành: </h6>
+                                <h6 class="card-text" th:text="${gameDetails.heDieuHanh}"></h6>
+                            </div>
+                            <div class="d-flex gap-2 mt-2">
+                                <h6 class="card-title fw-bold">Chơi bằng: </h6>
+                                <h6 class="card-text" th:text="${gameDetails.choiBang}"></h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--        THÔNG TIN TÀI KHOẢN-->
+        <!--        THÔNG TIN-->
         <div class="col-lg-4 d-sm-none d-lg-block">
-            <div class="card mx-auto border-0 shadow sticky-element" style="top: 100px; z-index: 1;">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold text-uppercase text-danger">Thông tin tài khoản</h5>
-                    <img src="https://via.placeholder.com/80" alt="Logo" class="img-fluid rounded-circle my-3">
-                    <p class="card-text">Xin chào: <strong>chanh03</strong></p>
-                    <div class="my-3 d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary me-2">Lưu bài</button>
-                        <!-- Nút chia sẻ Facebook -->
-                        <div class="fb-share-wrapper">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshopthuegameanhngo.com%2F&amp;src=sdkpreparse"
-                               class="custom-fb-button btn btn-primary"
-                               target="_blank">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
+            <div class="sticky-element p-0" style="top: 100px; z-index: 1">
+                <!--                THÔNG TIN TÀI KHOẢN-->
+                <div class="card border-0 shadow">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold text-uppercase text-danger">Thông tin tài khoản</h5>
+                        <img src="/images/logo.png" alt="Logo" class="img-fluid rounded-circle my-3"
+                             style="width: 100px;height: 100px;">
+                        <p class="card-text">Xin chào: <strong>NhaiConBietNgaoNgao</strong></p>
+                        <div class="my-3 d-flex justify-content-center align-items-center gap-2">
+                            <!--                        LƯU BÀI VIẾT-->
+                            <button class="btn btn-success me-2"><i class="fa-solid fa-bookmark"></i></button>
+                            <!-- Nút chia sẻ Facebook -->
+                            <div class="fb-share-wrapper">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fshopthuegameanhngo.com%2F&amp;src=sdkpreparse"
+                                   class="custom-fb-button btn btn-primary"
+                                   target="_blank">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            </div>
                         </div>
+                        <ul class="list-group list-group-flush text-center fw-bold">
+                            <li class="list-group-item small-font border-0">
+                                <i class="fa-solid fa-gamepad"></i> Game đã mua
+                            </li>
+                            <li class="list-group-item small-font border-0">
+                                <i class="fa-solid fa-tv"></i> Lịch sử xem game
+                            </li>
+                            <li class="list-group-item small-font border-0">
+                                <i class="fa-solid fa-wallet"></i> Lịch Sử Nạp VIP
+                            </li>
+                            <li class="list-group-item small-font border-0">
+                                <i class="fa-regular fa-bookmark"></i> Bài đã lưu
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="list-group list-group-flush text-start">
-                        <li class="list-group-item"><i class="bi bi-controller"></i> Game đã mua</li>
-                        <li class="list-group-item"><i class="bi bi-tv"></i> Lịch sử xem game</li>
-                        <li class="list-group-item"><i class="bi bi-wallet"></i> Lịch Sử Nạp VIP</li>
-                        <li class="list-group-item"><i class="bi bi-bookmark"></i> Bài đã lưu</li>
-                    </ul>
+                </div>
+                <!--        LỊCH SỬ CẬP NHẬT-->
+                <div class="card mx-auto border-0 shadow mt-3">
+                    <div class="card-header text-center p-3" style="background: #291f77">
+                        <h5 class="card-title fw-bold text-uppercase" style="color: white">Lịch sử cập nhật</h5>
+                        <h6 th:text="${'Game : '+gameDetails.getGame.ten}" class="card-title fw-bold text-uppercase"
+                            style="color: red">TÊN GAME</h6>
+                    </div>
+                    <div class="card-body text-center p-0">
+                        <ul class="list-group list-group-flush text-start mt-2" th:each="g : ${gameUpdateHistory}">
+                            <li class="list-group-item d-flex gap-2 border-bottom">
+                                <i class="fa-solid fa-check-to-slot"></i>
+                                <h6 th:text="${#dates.format(g.updateDate, 'dd/MM/yyyy HH:mm')}"></h6>
+                                <h6 class="fw-bold text-danger"
+                                    th:text="${'Phiên bản : '+g.phienBan+' - ID: '+g.id}"></h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--                GAME CÙNG THỂ LOẠI-->
+                <div class="card mx-auto border-0 shadow mt-3">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="btn btn-success border-0 rounded-0 w-50 small-font">GAME CÙNG THỂ LOẠI</button>
+                        <button class="btn btn-danger border-0 rounded-0 w-50 small-font">GAME CÙNG THỂ LOẠI</button>
+                    </div>
+                    <div class="card-body text-center p-0">
+                        <ul class="list-group list-group-flush text-start mt-2" th:each="s : ${sameGameType}">
+                            <li class="list-group-item border-bottom">
+                                <a class="nav-link d-flex gap-2" th:href="@{/chi-tiet/{id}(id=${s.id})}">
+                                    <div style="width: 150px;height: auto">
+                                        <img class="w-100" th:src="@{/images/games/{id}(id=${s.hinhAnh})}"
+                                             th:alt="${s.hinhAnh}" style="object-fit: cover;">
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold" th:text="${s.ten}"></h6>
+                                        <h6 th:text="${gameDetails.phienBan}"></h6>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!--    BÌNH LUẬN-->
     <div class="row mt-5">
-        <div class="card shadow-lg p-3 border-0">
+        <div class="card shadow p-3 border-0">
             <div class="d-flex align-items-center justify-content-center">
                 <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
                     <h4 class="fw-bold text-success">BÌNH LUẬN <i class="fa-regular fa-comments"></i></h4>
@@ -181,14 +230,14 @@
             <div class="mt-5">
                 <div th:each="c : ${comments}"
                      class="mb-2 d-flex justify-content-start align-items-center gap-2">
-                    <div class="border rounded-2 overflow-hidden text-center"
+                    <div class="rounded-2 overflow-hidden text-center"
                          style="width: 100px; height: 100px; box-shadow: 0 0 10px 0 rgb(0,255,37);">
                         <img class="w-100 h-100"
                              style="object-fit: cover;"
                              th:src="@{/users/images/{id}(id=${c.getUsername().hinhAnh})}"
                              th:alt="${c.getUsername().hinhAnh}">
                     </div>
-                    <div class="card border-0 shadow p-3 w-100">
+                    <div class="card border-1 p-3 w-100">
                         <div class="d-flex gap-5 justify-content-between align-items-center">
                             <h5 class="fw-bold text-success" th:text="${c.getUsername().fullName}"></h5>
                             <div class="d-flex align-middle gap-2">
