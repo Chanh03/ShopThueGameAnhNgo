@@ -1,9 +1,6 @@
 package com.anhngo.shopthueaccanhngo.controllers;
 
-import com.anhngo.shopthueaccanhngo.entities.Game;
-import com.anhngo.shopthueaccanhngo.entities.GameDetail;
-import com.anhngo.shopthueaccanhngo.entities.GameType;
-import com.anhngo.shopthueaccanhngo.entities.User;
+import com.anhngo.shopthueaccanhngo.entities.*;
 import com.anhngo.shopthueaccanhngo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -52,6 +49,10 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Lazy
+    @Autowired
+    private DownloadService downloadService;
+
     @ModelAttribute("gameTypes")
     public void gameTypes(Model model) {
         Pageable pageable = PageRequest.of(0, 12);
@@ -92,10 +93,13 @@ public class HomeController {
     @RequestMapping("/chi-tiet/{id}")
     public String detail(Model model, @PathVariable(name = "id") String id) {
         model.addAttribute("gameDetails", gameDetailsService.getAllByGameId(id).getLast());
+        model.addAttribute("gameDetailsAll", gameDetailsService.getAllByGameId(id));
         List<GameDetail> gameUpdateHistory = gameDetailsService.getAllByGameId(id)
                 .stream()
                 .sorted(Comparator.comparing(GameDetail::getUpdateDate).reversed())
                 .collect(Collectors.toList());
+        List<Download> downloads = downloadService.findAllByGameDetailsId(gameDetailsService.getByGameId(id).getId().toString());
+        model.addAttribute("downloads", downloads);
         model.addAttribute("gameUpdateHistory", gameUpdateHistory);
         model.addAttribute("sameGameType", gameDetailsService.getByGameId(id).getGame().getGameType().getGames());
         model.addAttribute("comments", commentService.getAllByGameId(id));

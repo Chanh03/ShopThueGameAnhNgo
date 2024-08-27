@@ -62,4 +62,7 @@ public class GameDetail {
     @OneToMany(mappedBy = "gameDetail")
     private Set<Photo> photos = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "gameDetail")
+    private Set<Download> downloads = new LinkedHashSet<>();
+
 }

@@ -13,6 +13,9 @@
     </ol>
 </nav>
 <div class="row">
+    <!--    CHÍNH-->
+    <!--    CHÍNH-->
+    <!--    CHÍNH-->
     <div class="col-lg-8">
         <!--            GIOI THIEU SƠ-->
         <div class="row">
@@ -63,8 +66,8 @@
                 <span aria-hidden="true" class="carousel-control-next-icon"></span>
             </button>
         </div>
-        <!--            THONG TIN CHI GAME-->
-        <div class="row mt-5">
+        <!--            THONG TIN GAME-->
+        <div class="row mt-3">
             <div class="d-flex align-items-center justify-content-center mt-5">
                 <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
                     <h3 class="fw-bold text-danger"><i class="fa-regular fa-circle-question"></i> THÔNG TIN GAME
@@ -72,7 +75,7 @@
                 </div>
                 <div class="line w-25"></div>
             </div>
-            <div class="col-lg-12 mt-2">
+            <div class="mt-2">
                 <div class="row g-0 shadow p-0">
                     <div class="card p-4 border-0 col-lg-6 col-md-12 col-sm-12">
                         <div class="d-flex gap-2">
@@ -121,7 +124,66 @@
                 </div>
             </div>
         </div>
+        <div class="row mt-3">
+            <div class="d-flex align-items-center justify-content-center mt-5">
+                <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
+                    <h3 class="fw-bold text-danger"><i class="fa-regular fa-circle-question"></i> Hướng dẫn cài đặt
+                        [[${gameDetails.getGame.ten}]]</h3>
+                </div>
+                <div class="line w-25"></div>
+            </div>
+            <div class="alert alert-warning">
+                <h6 class="fw-bold"><i class="fa-solid fa-angles-right"></i> Lưu ý trước khi cài đặt</h6>
+                <ul>
+                    <li>Đảm bảo máy tính của bạn đáp ứng được yêu cầu của game</li>
+                    <li>Đảm bảo máy tính của bạn không bị virus</li>
+                    <li>Đảm bảo máy tính của bạn không bị lỗi phần cứng</li>
+                    <li>Đảm bảo máy tính của bạn không bị lỗi phần mềm</li>
+                </ul>
+            </div>
+            <div class="alert alert-success">
+                <h6 class="fw-bold"><i class="fa-solid fa-angles-right"></i> Hướng dẫn cài đặt game
+                    [[${gameDetails.getGame.ten}]]</h6>
+                <ul>
+                    <li th:text="${gameDetails.huongDan}">HƯỚNG DẪN</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="d-flex align-items-center justify-content-center mt-5">
+                <div class="w-75 gap-2 d-flex justify-content-start align-items-center">
+                    <h3 class="fw-bold text-danger"><i class="fa-solid fa-download"></i> Link tải
+                        [[${gameDetails.getGame.ten}]]</h3>
+                </div>
+                <div class="line w-25"></div>
+            </div>
+            <div class="card shadow border-0 rounded-lg overflow-hidden">
+                <table class="table table-auto w-full my-3 table-hover">
+                    <thead>
+                    <tr>
+                        <th class="px-4 py-2 text-left font-semibold text-center">Phiên bản</th>
+                        <th class="px-4 py-2 text-left font-semibold text-center">Link tải</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="gd:${gameDetailsAll}" class="bg-white">
+                        <td class="text-center align-middle">
+                            <h6 th:text="${gd.getGame.ten+'-'+gd.phienBan}"></h6>
+                        </td>
+                        <td class="text-center">
+                            <a th:each="dl:${gd.getDownloads()}" th:href="@{${dl.linkTai}}"
+                               class="btn btn-decor">
+                                <i class="text-warning fa-brands fa-web-awesome"></i> [[${dl.loai}]]
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    <!--        THÔNG TIN-->
+    <!--        THÔNG TIN-->
     <!--        THÔNG TIN-->
     <div class="col-lg-4 d-sm-none d-lg-block">
         <div class="sticky-element p-0" style="top: 100px; z-index: 1">

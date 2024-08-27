@@ -42,9 +42,6 @@ public class Game {
     private Set<Comment> comments = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "game")
-    private Set<Download> downloads = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "game")
     private Set<GameDetail> gameDetails = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "game")

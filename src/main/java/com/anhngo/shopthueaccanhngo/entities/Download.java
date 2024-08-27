@@ -15,13 +15,13 @@ public class Download {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "Game_Id", nullable = false)
-    private Game game;
+    @JoinColumn(name = "Game_Details_Id", nullable = false)
+    private GameDetail gameDetail;
 
     @Column(name = "Loai", nullable = false, length = 50)
     private String loai;
 
-    @Column(name = "LinkTai", nullable = false)
+    @Column(name = "Link_Tai", nullable = false)
     private String linkTai;
 
 }
