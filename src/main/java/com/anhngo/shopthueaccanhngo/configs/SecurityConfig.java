@@ -25,6 +25,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> {
             auth.requestMatchers("/", "/trang-chu", "/home").permitAll();
             auth.requestMatchers("/login").authenticated();
+            auth.requestMatchers("/ho-so-ca-nhan").authenticated();
             auth.anyRequest().permitAll();
         });
         http.formLogin(form -> {
