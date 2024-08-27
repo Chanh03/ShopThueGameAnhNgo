@@ -6,6 +6,7 @@ import com.anhngo.shopthueaccanhngo.entities.GameType;
 import com.anhngo.shopthueaccanhngo.entities.User;
 import com.anhngo.shopthueaccanhngo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,20 +28,27 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping
 public class HomeController {
+    @Lazy
     @Autowired
     private GameService gameService;
 
+    @Lazy
     @Autowired
     private GameTypeService gameTypeService;
+
+    @Lazy
     @Autowired
     private GameDetailsService gameDetailsService;
 
+    @Lazy
     @Autowired
     private NotificationService notificationService;
 
+    @Lazy
     @Autowired
     private CommentService commentService;
 
+    @Lazy
     @Autowired
     private UserService userService;
 
@@ -100,7 +108,10 @@ public class HomeController {
     }
 
     @RequestMapping("/login")
-    public String login() {
+    public String login(@RequestParam(name = "error", required = false) String error, Model model) {
+        if (error != null) {
+            model.addAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");
+        }
         return "security/login";
     }
 

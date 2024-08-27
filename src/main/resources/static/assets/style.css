@@ -13,6 +13,7 @@ body {
     top: 0;
     z-index: 10;
 }
+
 .small-font {
     font-size: 14px;
 }
@@ -31,6 +32,7 @@ nav a:hover {
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .game-slide img {
     height: 100%;
     width: 100%;
