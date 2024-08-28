@@ -8,6 +8,7 @@ import org.hibernate.annotations.Nationalized;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -33,14 +34,14 @@ public class User implements UserDetails {
     @Column(name = "Full_Name", nullable = false)
     private String fullName;
 
-    @Column(name = "Phone", nullable = false, length = 20)
+    @Column(name = "Phone", length = 20)
     private String phone;
 
     @Column(name = "Ngay_Tao", nullable = false)
-    private Instant ngayTao;
+    private Date ngayTao;
 
     @Nationalized
-    @Column(name = "Address", nullable = false)
+    @Column(name = "Address")
     private String address;
 
     @Column(name = "Hinh_Anh")

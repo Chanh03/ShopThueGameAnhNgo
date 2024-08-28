@@ -28,13 +28,13 @@
                          class="img-fluid rounded-circle my-3"
                          style="width: 120px; height: 120px; object-fit: cover;">
                     <div class="text-start mt-3">
-                        <h6 class="card-subtitle mb-1 text-dark fw-bold"
-                            th:text="'Xin chào : '+${userProfile.fullName}"></h6>
-                        <p class="card-subtitle mb-2 text-muted"
+                        <h5 class="card-subtitle mb-3 text-dark fw-bold"
+                            th:text="'Xin chào : '+${userProfile.fullName}"></h5>
+                        <p class="card-subtitle mb-2 text-muted small-font"
                            th:text="'Ngày tạo : '+${#dates.format(userProfile.ngayTao, 'dd/MM/yyyy')}"></p>
-                        <p class="card-subtitle mb-2 text-muted" th:text="${userProfile.email}"></p>
-                        <p class="card-subtitle mb-2 text-muted" th:text="${userProfile.phone}"></p>
-                        <p class="card-subtitle mb-2 text-muted" th:text="${userProfile.address}"></p>
+                        <p class="card-subtitle mb-2 text-muted small-font" th:text="${userProfile.email}"></p>
+                        <p class="card-subtitle mb-2 text-muted small-font" th:text="${userProfile.phone}"></p>
+                        <p class="card-subtitle mb-2 text-muted small-font" th:text="${userProfile.address}"></p>
                     </div>
                     <div>
                         <a href="/doi-mat-khau" class="btn btn-outline-danger w-100 mt-3">Đổi mật khẩu</a>
@@ -45,7 +45,7 @@
     </div>
     <div class="col-lg-9">
         <div class="card border-0 shadow p-5 mb-3">
-            <h4 class="fw-bold text-danger">Cập nhật thông tin cá nhân</h4>
+            <h4 class="fw-bold fs-5 text-white text-center btn btn-decor">Cập nhật thông tin cá nhân</h4>
             <form action="#" method="post">
                 <div class="form-floating mb-3">
                     <input disabled type="text" class="form-control" id="tenTaiKhoan"

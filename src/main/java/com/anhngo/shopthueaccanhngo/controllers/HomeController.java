@@ -3,7 +3,6 @@ package com.anhngo.shopthueaccanhngo.controllers;
 import com.anhngo.shopthueaccanhngo.entities.*;
 import com.anhngo.shopthueaccanhngo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -25,31 +24,25 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping
 public class HomeController {
-    @Lazy
+
     @Autowired
     private GameService gameService;
 
-    @Lazy
     @Autowired
     private GameTypeService gameTypeService;
 
-    @Lazy
     @Autowired
     private GameDetailsService gameDetailsService;
 
-    @Lazy
     @Autowired
     private NotificationService notificationService;
 
-    @Lazy
     @Autowired
     private CommentService commentService;
 
-    @Lazy
     @Autowired
     private UserService userService;
 
-    @Lazy
     @Autowired
     private DownloadService downloadService;
 
@@ -62,18 +55,16 @@ public class HomeController {
 
     @ModelAttribute("notifications")
     public void notifications(Model model) {
-        model.addAttribute("notifications", notificationService.getAll());
-        model.addAttribute("notificationsSize", notificationService.getAll().size());
+        List<Notification> notifications = notificationService.getAll();
+        model.addAttribute("notifications", notifications);
     }
 
     @ModelAttribute("authentication")
     public void authentications(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            String username = ((UserDetails) principal).getUsername();
-            User userProfile = userService.findById(username);
+        UserDetails userDetails = authentication != null && authentication.getPrincipal() instanceof UserDetails ? (UserDetails) authentication.getPrincipal() : null;
+        if (userDetails != null) {
+            User userProfile = userService.findById(userDetails.getUsername());
             model.addAttribute("userProfile", userProfile);
         } else {
             model.addAttribute("userProfile", null);
@@ -92,15 +83,11 @@ public class HomeController {
 
     @RequestMapping("/chi-tiet/{id}")
     public String detail(Model model, @PathVariable(name = "id") String id) {
-        model.addAttribute("gameDetails", gameDetailsService.getAllByGameId(id).getLast());
-        model.addAttribute("gameDetailsAll", gameDetailsService.getAllByGameId(id));
-        List<GameDetail> gameUpdateHistory = gameDetailsService.getAllByGameId(id)
-                .stream()
-                .sorted(Comparator.comparing(GameDetail::getUpdateDate).reversed())
-                .collect(Collectors.toList());
-        List<Download> downloads = downloadService.findAllByGameDetailsId(gameDetailsService.getByGameId(id).getId().toString());
-        model.addAttribute("downloads", downloads);
-        model.addAttribute("gameUpdateHistory", gameUpdateHistory);
+        List<GameDetail> gameDetails = gameDetailsService.getAllByGameId(id);
+        model.addAttribute("gameDetails", gameDetails.getLast());
+        model.addAttribute("gameDetailsAll", gameDetails);
+        model.addAttribute("gameUpdateHistory", gameDetails.stream().sorted(Comparator.comparing(GameDetail::getUpdateDate).reversed()).collect(Collectors.toList()));
+        model.addAttribute("downloads", downloadService.findAllByGameDetailsId(gameDetailsService.getByGameId(id).getId().toString()));
         model.addAttribute("sameGameType", gameDetailsService.getByGameId(id).getGame().getGameType().getGames());
         model.addAttribute("comments", commentService.getAllByGameId(id));
         return "home/_gameDetails";
@@ -122,10 +109,9 @@ public class HomeController {
     @RequestMapping("/ho-so-ca-nhan")
     public String handleUserProfile(@RequestParam String username, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
+        UserDetails userDetails = authentication != null && authentication.getPrincipal() instanceof UserDetails ? (UserDetails) authentication.getPrincipal() : null;
+        if (userDetails != null) {
+            username = userDetails.getUsername();
             User userProfile = userService.findById(username);
             model.addAttribute("userProfile", userProfile);
         } else {

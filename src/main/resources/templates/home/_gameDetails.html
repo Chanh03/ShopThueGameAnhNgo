@@ -191,11 +191,13 @@
             <div sec:authorize="isAuthenticated()" class="card border-0 shadow">
                 <div class="card-body text-center">
                     <h5 class="card-title fw-bold text-uppercase text-danger">Thông tin tài khoản</h5>
-                    <img th:src="@{/images/users/{id}(id=${userProfile.hinhAnh})}" alt="Logo"
+                    <img th:src="@{/images/users/{id}(id=${userProfile.hinhAnh})}" th:alt="${userProfile.hinhAnh}"
                          class="img-fluid rounded-circle my-3"
                          style="width: 100px;height: 100px;">
                     <p class="card-text">Xin chào: <strong
                             th:text="${userProfile.fullName}">NhaiConBietNgaoNgao</strong></p>
+                    <p class="card-text small-font">Số dư hiện tại: <strong class="btn fw-bold btn-outline-danger fs-6"
+                            th:text="${userProfile.money+'đ'}">NhaiConBietNgaoNgao</strong></p>
                     <div class="my-3 d-flex justify-content-center align-items-center gap-2">
                         <!--                        LƯU BÀI VIẾT-->
                         <button class="btn btn-success me-2"><i class="fa-solid fa-bookmark"></i></button>
