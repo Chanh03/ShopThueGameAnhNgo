@@ -166,7 +166,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="gd:${gameDetailsAll}" class="bg-white">
+                    <tr th:each="gd:${gameDetailsAll.reversed()}" class="bg-white">
                         <td class="text-center align-middle">
                             <h6 th:text="${gd.getGame.ten+'-'+gd.phienBan}"></h6>
                         </td>
@@ -197,7 +197,8 @@
                     <p class="card-text">Xin chào: <strong
                             th:text="${userProfile.fullName}">NhaiConBietNgaoNgao</strong></p>
                     <p class="card-text small-font">Số dư hiện tại: <strong class="btn fw-bold btn-outline-danger fs-6"
-                            th:text="${userProfile.money+'đ'}">NhaiConBietNgaoNgao</strong></p>
+                                                                            th:text="${userProfile.money+'đ'}">NhaiConBietNgaoNgao</strong>
+                    </p>
                     <div class="my-3 d-flex justify-content-center align-items-center gap-2">
                         <!--                        LƯU BÀI VIẾT-->
                         <button class="btn btn-success me-2"><i class="fa-solid fa-bookmark"></i></button>
@@ -250,21 +251,23 @@
                     <button class="btn btn-success border-0 rounded-0 w-50 small-font">GAME CÙNG THỂ LOẠI</button>
                     <button class="btn btn-danger border-0 rounded-0 w-50 small-font">GAME CÙNG THỂ LOẠI</button>
                 </div>
-                <div class="card-body text-center p-0">
-                    <ul class="list-group list-group-flush text-start mt-2" th:each="s : ${sameGameType}">
-                        <li class="list-group-item border-bottom">
-                            <a class="nav-link d-flex gap-2" th:href="@{/chi-tiet/{id}(id=${s.id})}">
-                                <div style="width: 150px;height: auto">
-                                    <img class="w-100" th:src="@{/images/games/{id}(id=${s.hinhAnh})}"
-                                         th:alt="${s.hinhAnh}" style="object-fit: cover;">
+                <div class="">
+                    <a th:href="@{/chi-tiet/{id}(id=${s.id})}" th:each="s : ${sameGameType}" class="nav-link">
+                        <div class="card border-0 rounded-0 hover-animation d-flex flex-row gap-2 align-items-center">
+                            <div class="col-lg-3 col-sm-3">
+                                <img th:src="@{/images/games/{id}(id=${s.hinhAnh})}" class="w-100"
+                                     th:alt="${s.hinhAnh}">
+                            </div>
+                            <div class="col-lg-9 col-sm-9 p-2">
+                                <div class="overflow-hidden p-0" style="height: 45px;word-break: break-word">
+                                    <div>
+                                        <h6 class="fw-bold" th:text="${s.ten}"></h6>
+                                        <h6 th:text="${s.gioiThieu}"></h6>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h6 class="fw-bold" th:text="${s.ten}"></h6>
-                                    <h6 th:text="${gameDetails.phienBan}"></h6>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -294,7 +297,7 @@
         </div>
         <div class="line w-25 bg-success"></div>
         <div class="mt-5">
-            <div th:each="c : ${comments}"
+            <div th:each="c : ${comments.reversed()}"
                  class="mb-2 d-flex justify-content-start align-items-center gap-2">
                 <div class="rounded-2 overflow-hidden text-center"
                      style="width: 100px; height: 100px; box-shadow: 0 0 10px 0 rgb(0,255,37);">

@@ -24,13 +24,13 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(auth -> {
             auth.requestMatchers("/", "/trang-chu", "/home").permitAll();
-            auth.requestMatchers("/login").authenticated();
-            auth.requestMatchers("/ho-so-ca-nhan").authenticated();
+            auth.requestMatchers("/login", "/ho-so-ca-nhan").authenticated();
+            auth.requestMatchers("/admin/**").hasAnyRole("ADMIN", "STAFF");
             auth.anyRequest().permitAll();
         });
         http.formLogin(form -> {
             form.loginPage("/login").permitAll()
-                    .defaultSuccessUrl("/home", true)  // Đổi URL thành /home hoặc URL phù hợp khác
+                    .defaultSuccessUrl("/login/success", true)
                     .failureUrl("/login?error=true");
         });
         http.logout(logout -> {

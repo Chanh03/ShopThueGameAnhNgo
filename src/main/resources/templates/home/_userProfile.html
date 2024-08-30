@@ -24,7 +24,7 @@
             <!-- THÔNG TIN TÀI KHOẢN -->
             <div class="card border-0 shadow">
                 <div class="card-body text-center">
-                    <img th:src="@{/images/users/{id}(id=${userProfile.hinhAnh})}" alt="Avatar"
+                    <img th:src="@{/images/users/{id}(id=${userProfile.hinhAnh})}" th:alt="${userProfile.hinhAnh}"
                          class="img-fluid rounded-circle my-3"
                          style="width: 120px; height: 120px; object-fit: cover;">
                     <div class="text-start mt-3">
@@ -70,8 +70,33 @@
                 </div>
             </form>
         </div>
-        <div class="card border-0 shadow p-5">
+        <div class="card border-0 shadow p-5" th:if="${rental}">
             <h4 class="fw-bold text-danger">Game đã thuê</h4>
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th>Tên game</th>
+                        <th>Ngày thuê</th>
+                        <th>Ngày hết hạn</th>
+                        <th class="text-center">Trạng thái</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="r, iterStat : ${rental}">
+                        <td class="text-center" th:text="${iterStat.count}"></td>
+                        <td th:text="${r.game.ten}"></td>
+                        <td th:text="${#dates.format(r.ngayBatDauThue, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#dates.format(r.ngayBatDauThue, 'dd/MM/yyyy')}"></td>
+                        <td class="text-center">
+                            <span th:if="${r.trangThai}"><i class="fa-solid fs-3 fa-square-check text-success"></i></span>
+                            <span th:if="${!r.trangThai}"><i class="fa-solid fs-3 fa-square-xmark text-danger"></i></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

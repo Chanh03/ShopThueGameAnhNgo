@@ -46,6 +46,9 @@ public class HomeController {
     @Autowired
     private DownloadService downloadService;
 
+    @Autowired
+    private RentalService rentalService;
+
     @ModelAttribute("gameTypes")
     public void gameTypes(Model model) {
         Pageable pageable = PageRequest.of(0, 12);
@@ -106,13 +109,21 @@ public class HomeController {
         return "security/login";
     }
 
+    @RequestMapping("/login/success")
+    public String loginSuccess() {
+        return "redirect:/";
+    }
+
     @RequestMapping("/ho-so-ca-nhan")
-    public String handleUserProfile(@RequestParam String username, Model model) {
+    public String handleUserProfile(Model model) {
+        String username = "";
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = authentication != null && authentication.getPrincipal() instanceof UserDetails ? (UserDetails) authentication.getPrincipal() : null;
         if (userDetails != null) {
             username = userDetails.getUsername();
             User userProfile = userService.findById(username);
+            List<Rental> rentals = rentalService.findAllByUsername(userProfile);
+            model.addAttribute("rental", rentals);
             model.addAttribute("userProfile", userProfile);
         } else {
             model.addAttribute("userProfile", null);

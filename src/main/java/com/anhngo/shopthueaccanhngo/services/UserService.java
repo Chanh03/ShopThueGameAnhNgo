@@ -21,9 +21,7 @@ public class UserService {
 
     public List<UserGET> findAll() {
         List<User> users = userRepo.findAll();
-        return users.stream()
-                .map(UserGET::new)
-                .collect(Collectors.toList());
+        return users.stream().map(UserGET::new).collect(Collectors.toList());
     }
 
     public UserGET findByIdAPI(String id) {
@@ -51,21 +49,19 @@ public class UserService {
     }
 
     public UserPOST updateAPI(String id, UserPOST userPOST) {
-        return userRepo.findById(id)
-                .map(user -> {
-                    user.setUsername(userPOST.getUsername());
-                    user.setPassword(userPOST.getPassword());
-                    user.setEnabled(userPOST.getEnabled());
-                    user.setPhone(userPOST.getPhone());
-                    user.setEmail(userPOST.getEmail());
-                    user.setFullName(userPOST.getFullName());
-                    user.setNgayTao(userPOST.getNgayTao());
-                    user.setAddress(userPOST.getAddress());
-                    user.setHinhAnh(userPOST.getHinhAnh());
-                    user.setMoney(userPOST.getMoney());
-                    userRepo.save(user);
-                    return new UserPOST(user);
-                })
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        return userRepo.findById(id).map(user -> {
+            user.setUsername(userPOST.getUsername());
+            user.setPassword(userPOST.getPassword());
+            user.setEnabled(userPOST.getEnabled());
+            user.setPhone(userPOST.getPhone());
+            user.setEmail(userPOST.getEmail());
+            user.setFullName(userPOST.getFullName());
+            user.setNgayTao(userPOST.getNgayTao());
+            user.setAddress(userPOST.getAddress());
+            user.setHinhAnh(userPOST.getHinhAnh());
+            user.setMoney(userPOST.getMoney());
+            userRepo.save(user);
+            return new UserPOST(user);
+        }).orElseThrow(() -> new RuntimeException("User not found"));
     }
 }
